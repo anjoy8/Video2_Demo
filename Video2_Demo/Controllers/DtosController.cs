@@ -29,12 +29,47 @@ namespace Video2_Demo.Controllers
             var allGoodsList = new List<GoodsEntity>();
 
             var goodsList = new List<GoodsEntity>() {
-                new GoodsEntity(){ Id=1,BrandName="Lining",Name="商品1",Price=23.25M,CreateTime=DateTime.Now,IsDeleted=true,Items=new List<Items> (){
-                    new Items (){ Id=11,Name="apple"}
-                } },
-                new GoodsEntity(){ Id=2,BrandName="耐克",Name="商品2",Price=21.25M,CreateTime=DateTime.Now },
-                new GoodsEntity(){ Id=3,BrandName=null,Name="商品3",Price=20.25M,CreateTime=DateTime.Now },
-                new GoodsEntity(){ Id=4,BrandName="New Balance",Name="商品4",Price=19.25M,CreateTime=null },
+                new GoodsEntity(){
+                    Id =1,
+                    Brands=new BrandsEntity(){
+                        Id=111,
+                        Name="Lining"
+                    },
+                    Name ="商品1",
+                    Price =23.25M,
+                    CreateTime =DateTime.Now,
+                    IsDeleted =true,
+                    Items =new List<Items> (){
+                        new Items (){ Id=11,Name="apple"}
+                    }
+                },
+                new GoodsEntity(){
+                    Id =2,
+                    Brands=new BrandsEntity(){
+                        Id=111,
+                        Name="耐克"
+                    },
+                    Name ="商品2",
+                    Price =21.25M,
+                    CreateTime =DateTime.Now
+                },
+                new GoodsEntity(){
+                    Id =3,
+                    Brands =null,
+                    Name ="商品3",
+                    Price =20.25M,
+                    CreateTime =DateTime.Now
+                },
+                new GoodsEntity(){
+                    Id =4,
+                    Brands =new BrandsEntity(){
+                        Id=111,
+                        Name="New Balance"
+                    },
+                    Name ="商品4",
+                    Price =19.25M,
+                    CreateTime =null
+                },
             };
 
             allGoodsList = goodsList;
@@ -71,9 +106,21 @@ namespace Video2_Demo.Controllers
 
         // GET: api/Dtos
         [HttpGet]
-        public IEnumerable<string> Get()
+        public GoodsDto Get()
         {
-            return new string[] { "value1", "value2" };
+            GoodsEntity goodsEntity = new GoodsEntity() {
+                Name="apple",
+                Price=22,
+                Id=6,
+                CreateTime=DateTime.Now
+            };
+            // 属性很多，赋值麻烦
+            // 修改业务逻辑
+            GoodsDto goodsDto = new GoodsDto() {
+                GoodsName=goodsEntity.Name,
+                Price = goodsEntity.Price,
+            };
+            return goodsDto ;
         }
 
         // GET: api/Dtos/5

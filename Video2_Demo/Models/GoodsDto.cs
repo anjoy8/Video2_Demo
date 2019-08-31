@@ -14,5 +14,7 @@ namespace Video2_Demo.Models
         public bool IsDeleted { get; set; }
         public List<Items> Items { get; set; }
 
+        public string BrandName { get; set; }
+
     }
 }

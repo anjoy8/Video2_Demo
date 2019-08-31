@@ -9,11 +9,11 @@ namespace Video2_Demo.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string BrandName { get; set; }
         public decimal Price { get; set; }
         public DateTime? CreateTime { get; set; }
         public bool IsDeleted { get; set; }
         public List<Items> Items { get; set; }
+        public BrandsEntity Brands { get; set; }
 
     }
 }
