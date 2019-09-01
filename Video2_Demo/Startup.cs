@@ -103,7 +103,7 @@ namespace Video2_Demo
             //}); 
             #endregion
 
-            app.UseMiddleware<JwtTokenAuth>();
+            //app.UseMiddleware<JwtTokenAuth>();
 
             app.UseAuthentication();
 
