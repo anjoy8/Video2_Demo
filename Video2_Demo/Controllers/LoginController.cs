@@ -14,11 +14,11 @@ namespace Video2_Demo.Controllers
     {
 
         [HttpGet]
-        public void GetjsonpForVue(string callback)
+        public void TestjsonpForVue(string callback)
         {
             TokenModelJwt tokenModelJwt = new TokenModelJwt()
             {
-                Role = "admin",
+                Role = "jsonp",
                 Uid = 1,
                 Work = "dsdf"
             };
@@ -43,16 +43,30 @@ namespace Video2_Demo.Controllers
             return "value";
         }
 
-        // POST: api/Login
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult TestProxyForVue()
         {
+            TokenModelJwt tokenModelJwt = new TokenModelJwt()
+            {
+                Role = "proxy",
+                Uid = 2,
+                Work = "dsdf"
+            };
+            return Ok(tokenModelJwt);
         }
 
-        // PUT: api/Login/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+
+        [HttpPut]
+        [Route("/apicors/Login/TestCORSForVue")]
+        public ActionResult TestCORSForVue()
         {
+            TokenModelJwt tokenModelJwt = new TokenModelJwt()
+            {
+                Role = "cors",
+                Uid = 3,
+                Work = "dsdf"
+            };
+            return Ok(tokenModelJwt);
         }
 
         // DELETE: api/ApiWithActions/5

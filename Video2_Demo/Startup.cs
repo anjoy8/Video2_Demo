@@ -71,17 +71,6 @@ namespace Video2_Demo
             //跨域第二种方法，声明策略，记得下边app中配置
             services.AddCors(c =>
             {
-                //↓↓↓↓↓↓↓注意正式环境不要使用这种全开放的处理↓↓↓↓↓↓↓↓↓↓
-                c.AddPolicy("AllRequests", policy =>
-                {
-                    policy
-                    .AllowAnyOrigin()//允许任何源
-                    .AllowAnyMethod()//允许任何方式
-                    .AllowAnyHeader()//允许任何头
-                    .AllowCredentials();//允许cookie
-                });
-                //↑↑↑↑↑↑↑注意正式环境不要使用这种全开放的处理↑↑↑↑↑↑↑↑↑↑
-
 
                 //一般采用这种方法
                 c.AddPolicy("LimitRequests", policy =>
@@ -89,7 +78,7 @@ namespace Video2_Demo
                     // 支持多个域名端口，注意端口号后不要带/斜杆：比如localhost:8000/，是错的
                     // 注意，http://127.0.0.1:5401 和 http://localhost:5401 是不一样的，尽量写两个
                     policy
-                    .WithOrigins("http://127.0.0.1:5401","http://localhost:5401")
+                    .WithOrigins("http://127.0.0.1:5401","http://localhost:5401", "http://127.0.0.1:5402", "http://localhost:5402")
                     .AllowAnyHeader()//Ensures that the policy allows any header.
                     .AllowAnyMethod();
                 });

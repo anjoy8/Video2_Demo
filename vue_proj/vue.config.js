@@ -38,15 +38,13 @@ module.exports = {
     // proxy: null, // 设置代理
     proxy: {
       // 配置多个代理
-      "/api": {
+      "/api/": {//相对路径，完整的地址，应该是 localhost:5401/api/xxx，而不是 localhost:5000/api/xxx
         target: "http://localhost:5000",//这里改成你自己的后端api端口地址，记得每次修改，都需要重新build
-        //target: "http://localhost:58427",
-        //target: "http://api.douban.com",
-        ws: true,
-        changeOrigin: true,
+        ws: true, // 是否代理websockets
+        changeOrigin: true,// 默认false，是否需要改变原始主机头为目标URL
         pathRewrite: {
           // 路径重写，
-          "^/apb": "" // 替换target中的请求地址
+          // "^/apb": "" // 替换target中的请求地址
         }
       }
     },
